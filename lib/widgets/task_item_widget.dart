@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Para formatear la hora
 import 'package:provider/provider.dart';
-
+import '../screens/task_detail_screen.dart'; // Asegúrate que la ruta sea correcta según tu estructura de carpetas
 import '../models/task.dart';
 import '../provider/task_provider.dart'; // Lo necesitarás para acciones como completar o eliminar
 
@@ -124,9 +124,11 @@ class TaskItemWidget extends StatelessWidget {
           },
         ),
         onTap: () {
-          // Podrías navegar a una pantalla de edición de tarea o mostrar un diálogo
-          // print('Editar tarea: ${task.title}');
-          // Ejemplo: _showEditTaskDialog(context, task);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => TaskDetailScreen(task: task),
+            ),
+          );
         },
       ),
     );
